@@ -1,0 +1,48 @@
+{
+  "author": {
+    "name": "memes"
+  },
+  "bugs": {
+    "url": "https://github.com/skhmt/tapic.js/issues"
+  },
+  "dependencies": {
+    "ws": "^1.1.0"
+  },
+  "description": "A simple Twitch API and Chat library.",
+  "devDependencies": {
+    "jsdoc": "^3.4.2",
+    "docdash": "^0.4.0",
+    "jshint": "^2.9.4",
+    "webpack": "^1.13.3",
+    "google-closure-compiler-js": "^20161024.0.0"
+  },
+  "directories": {},
+  "homepage": "https://github.com/skhmt/tapic.js#readme",
+  "keywords": [
+    "chat",
+    "twitch"
+  ],
+  "license": "MIT",
+  "main": "dist/tapic.js",
+  "maintainers": [
+    {
+      "email": "koshinn@gmail.com",
+      "name": "skhmt"
+    }
+  ],
+  "name": "tapic",
+  "optionalDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skhmt/tapic.js.git"
+  },
+  "scripts": {
+    "build:min": "webpack --min",
+    "build:js": "webpack",
+    "docs": "jsdoc ./dist/tapic.js -t ./node_modules/docdash -d ./docs",
+    "lint": "jshint ./dist/tapic.js",
+    "build:header": "node ./scripts/header.js ./dist/tapic.js ./dist/tapic.min.js",
+    "build": "npm run build:min && npm run build:js && npm run build:header && npm run docs && npm run lint"
+  },
+  "version": "5.0.2"
+}

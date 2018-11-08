@@ -1,0 +1,50 @@
+<html>
+
+<body>
+  <div id="chat" style="width: 1600px; height: 800px; overflow-y: scroll;">
+  </div>
+  <script src="../../dist/tapic.js"></script>
+  <script>
+    const oauth = 'k72vf2xg7d5bksevy1wywmpr82jvzf';
+    const channel = 'loltyler1';
+
+    const $chat = document.getElementById('chat');
+
+    var targetEmoteCounter = { "POG": 0, "TYLER": 0};
+
+    TAPIC.listen('raw', res => addChatScroll($chat, `<p>${res}</p>`));
+    TAPIC.listen('message', event => checkIfTargetText(event.text.toUpperCase()));
+
+
+    TAPIC.setup(oauth, username => TAPIC.joinChannel(channel));
+
+    function checkIfTargetText(msg) {
+      for (var emote in targetEmoteCounter){
+        if (msg.includes(emote)){
+          console.log('message includes '+emote)
+          targetEmoteCounter[emote]++;
+        }
+      }
+      console.log(msg);
+      console.log(targetEmoteCounter);
+    }
+
+    function addChatScroll(el, text) {
+      // total height of content including hidden content minus the visible height of element
+      const hiddenContentHeight = el.scrollHeight - el.clientHeight;
+      // number of pixels away from actually being scrolled to the bottom that counts as being at the bottom
+      const pixelBuffer = 5;
+      const heightFromContentTop = el.scrollTop + pixelBuffer;
+
+      const isScrolledToBottom = hiddenContentHeight <= heightFromContentTop;
+
+      // add message
+      el.innerHTML += text;
+
+      // if it was scrolled to the bottom before the message was appended, scroll to the bottom
+      if (isScrolledToBottom) el.scrollTop = Number.MAX_VALUE;
+    }
+  </script>
+</body>
+
+</html>
