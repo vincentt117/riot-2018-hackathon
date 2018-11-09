@@ -59,7 +59,8 @@ def fetchMatchHistory(name, region, stream_start_time):
         #print(p.summoner.name, 'playing', p.champion.name)
         #print(p.id, p.summoner.account.id, p.summoner.region, p.participantstats.kills, p.participantstats.deaths, p.participantstats.assists)
         match_dict = {}
-        match_dict.update({
+        try:
+            match_dict.update({
             'match_id': match.id,
             'win': p.stats.win,
             'kills': p.stats.kills,
@@ -68,6 +69,17 @@ def fetchMatchHistory(name, region, stream_start_time):
             'champion_id': p.champion.id,
             'champion_name': p.champion.name,
             'clips': clips[match.id]
+            })
+        except:
+            match_dict.update({
+            'match_id': match.id,
+            'win': p.stats.win,
+            'kills': p.stats.kills,
+            'deaths': p.stats.deaths,
+            'assists': p.stats.assists,
+            'champion_id': p.champion.id,
+            'champion_name': p.champion.name,
+            'clips': ''
             })
         match_data.append(match_dict)
         print(match.id, p.stats.win, p.stats.kills, p.stats.deaths, p.stats.assists, p.champion.id, p.champion.name)
