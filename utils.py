@@ -49,7 +49,8 @@ def fetchMatchHistory(name, region, stream_start_time):
     match_data = []
     
     # OPEN matchCLip.json
-    with open(os.path.join(os.getcwd(),'matchClip.json')) as clip_record:    
+    json_path = os.path.join(os.getcwd(),'matchClip.json')
+    with open(json_path) as clip_record:    
         clips = json.load(clip_record)
 
     for match in match_history:
