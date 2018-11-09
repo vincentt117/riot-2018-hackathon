@@ -98,9 +98,9 @@ def fetchCurrentMatchId(name, region):
 """ MAIN.PY CODE """
 
 # Stream specific info
-channelName = 'gosu' # Name of player on Twitch
-broadcasterID = 41939266 # Twitch broadcaster ID of player
-summonerName = 'StopBanningVayne' # Summoner name of player
+channelName = 'nightblue3' # Name of player on Twitch
+broadcasterID = 26946000 # Twitch broadcaster ID of player
+summonerName = 'LOLXDLOLXDD' # Summoner name of player
 summonerRegion = 'NA' # Physical region of the player
 playState = [-1, 0] # State of whether a player is in a game. [0] is match id (if not -1 their in game). [1] is the epoch time of when the last check was done. 
 
@@ -146,16 +146,16 @@ def new_message(msg):
                 if targetEmoteCounter[targetEmote][0] == 0:
                     targetEmoteCounter[targetEmote][0] = time.time()
                 # Once the it's 5 seconds past the timestamp, check if thres/?hold is met. 
-                elif time.time() >= targetEmoteCounter[targetEmote][0] + ellapse:
-                    # If threshold met, make the call
-                    if targetEmoteCounter[targetEmote][1] >= json.loads(requests.get("https://api.twitch.tv/kraken/streams/" + str(broadcasterID), data=None, headers={'Accept': 'application/vnd.twitchtv.v5+json', 'Client-ID': clientID})
+            if time.time() >= targetEmoteCounter[targetEmote][0] + ellapse:
+                # If threshold met, make the call
+                if targetEmoteCounter[targetEmote][1] >= json.loads(requests.get("https://api.twitch.tv/kraken/streams/" + str(broadcasterID), data=None, headers={'Accept': 'application/vnd.twitchtv.v5+json', 'Client-ID': clientID})
 .content.decode('latin1'))['stream']['viewers'] * thresholdFactor:
-                        highestEmoteCount = max([i[0] for i in targetEmoteCounter.values()])
-                        highestEmote = targetEmote
-                        for i in targetEmoteCounter:
-                            if targetEmoteCounter[i] == highestEmoteCount:
-                                highestEmote = i
-                        onThresholdMeet(highestEmote, targetEmoteCounter[highestEmote][1])   
+                    highestEmoteCount = max([i[0] for i in targetEmoteCounter.values()])
+                    highestEmote = targetEmote
+                    for i in targetEmoteCounter:
+                        if targetEmoteCounter[i] == highestEmoteCount:
+                            highestEmote = i
+                    onThresholdMeet(highestEmote, targetEmoteCounter[highestEmote][1])   
 
 # Function called when the threshold is meet within the ellapse
 def onThresholdMeet(emote, emoteCount):
