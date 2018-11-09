@@ -49,7 +49,7 @@ def fetchMatchHistory(name, region, stream_start_time):
     match_data = []
     
     # OPEN matchCLip.json
-    with open('~/riot-2018-hackathon/matchClip.json') as clip_record:    
+    with open(os.getcwd()+'/matchClip.json') as clip_record:    
         clips = json.load(clip_record)
 
     for match in match_history:
