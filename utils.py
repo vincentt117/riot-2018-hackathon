@@ -49,10 +49,10 @@ def fetchMatchHistory(name, region, stream_start_time):
     match_data = []
     
     # OPEN matchCLip.json
-    json_path = os.path.join(os.getcwd(),'matchClip.json')
-    with open(json_path) as clip_record:    
+    
+    with open('matchClip.json') as clip_record:    
         clips = json.load(clip_record)
-
+    
     for match in match_history:
         #print(match.id)
         p = match.participants[player]
@@ -118,9 +118,9 @@ def fetchCurrentMatchId(name, region):
 """ MAIN.PY CODE """
 
 # Stream specific info
-channelName = 'nightblue3' # Name of player on Twitch
-broadcasterID = 26946000 # Twitch broadcaster ID of player
-summonerName = 'LOLXDLOLXDD' # Summoner name of player
+channelName = 'bern' # Name of player on Twitch
+broadcasterID = 40529315 # Twitch broadcaster ID of player
+summonerName = 'DaRkHaWk72' # Summoner name of player
 summonerRegion = 'NA' # Physical region of the player
 playState = [-1, 0] # State of whether a player is in a game. [0] is match id (if not -1 their in game). [1] is the epoch time of when the last check was done. 
 
