@@ -47,6 +47,11 @@ def fetchMatchHistory(name, region, stream_start_time):
     match_history = MatchHistory(summoner=player, begin_time=start_time, end_time=end_time)
 
     match_data = []
+    
+    # OPEN matchCLip.json
+    with open('matchClip.json') as clip_record:    
+        clips = json.load(clip_record)
+
     for match in match_history:
         #print(match.id)
         p = match.participants[player]
@@ -61,11 +66,13 @@ def fetchMatchHistory(name, region, stream_start_time):
             'deaths': p.stats.deaths,
             'assists': p.stats.assists,
             'champion_id': p.champion.id,
-            'champion_name': p.champion.name
+            'champion_name': p.champion.name,
+            'clips': clips[match.id]
             })
         match_data.append(match_dict)
         print(match.id, p.stats.win, p.stats.kills, p.stats.deaths, p.stats.assists, p.champion.id, p.champion.name)
         #print(p.summoner.region, p.summoner.account.id, p.summoner.name, p.summoner.id, p.champion.id, p.ParticipantStatsData.kills)
+    # CLOSE matchClip.json
     print(match_data)
     return match_data
 
