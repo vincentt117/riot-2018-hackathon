@@ -1,0 +1,18 @@
+# README
+
+## server setup
+
+1. install conda
+
+2. conda create --name py36 python=3.6
+
+3. source activate py36
+
+4. export Riot API key or run test script first to set it the API key
+
+
+
+### misc
+
+ex curl request:
+curl -d '{"summoner_name":"Cycon", "region":"NA"}' -H "Content-Type: application/json" -X POST http://localhost:8000/getMatch

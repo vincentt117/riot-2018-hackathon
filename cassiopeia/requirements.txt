@@ -1,0 +1,8 @@
+flake8
+pytest
+merakicommons>=1.0.5
+datapipelines>=1.0.5
+pycurl
+Pillow
+arrow
+requests
