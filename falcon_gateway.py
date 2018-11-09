@@ -4,8 +4,8 @@ import os
 import json
 import pickle
 
-import data_handler
-from data_handler import find_match, find_history, setup_streamer_config
+#import data_handler
+from data_handler import find_match, find_history, setup_streamer_config, find_latest_clip
 from utils import ThreadingExample
 
 class InfoResource(object):
@@ -14,7 +14,6 @@ class InfoResource(object):
         resp.status = falcon.HTTP_200  # This is the default status
         resp.body = ('Placeholder sanity check for GET endpoint')
 
-# Get match status for the user
 class getMatchResource(object):
     def on_get(self, req, resp):
         """Handles GET requests"""
@@ -115,13 +114,15 @@ class getLatestClip(object):
     def on_get(self, req, resp):
         """Handles GET requests"""
         resp.status = falcon.HTTP_200  # This is the default status
+        """
         clip_info = {
             'match_id': '69696969',
             'clip_url': 'https://clips.twitch.tv/kappakappakappa',
             'clip_type': 'funny'
             # clips: [{"clip_url":<URL>, "clip_type":<TYPE>, "amount":<NUM>}]
             }
-        resp.body = json.dumps(clip_info)
+        """
+        resp.body = json.dumps(find_latest_clip())
 
 # falcon.API instances are callable WSGI apps. Never change this.
 app = falcon.API()

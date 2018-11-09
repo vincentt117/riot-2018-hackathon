@@ -15,7 +15,7 @@ from twitchchat import twitch_chat
 from cassiopeia.core import Summoner, MatchHistory, Match
 
 # constants/init variables
-
+cass.set_riot_api_key("RGAPI-52e11cdb-3e82-43f6-b615-c03d083800d1")
 cass.set_default_region("NA")
 
 
@@ -105,9 +105,9 @@ summonerRegion = 'NA' # Physical region of the player
 playState = [-1, 0] # State of whether a player is in a game. [0] is match id (if not -1 their in game). [1] is the epoch time of when the last check was done. 
 
 # Authentication
-#
-#
-#
+chatOauthToken = 'oauth:k72vf2xg7d5bksevy1wywmpr82jvzf'
+clipingOauthToken = 'jipian02wzvt9rq5l8jfoiakrbxkny'
+clientID = 'zboofba8qoqwr9lb5aouo0hiwvfqlg'
 
 # the time in seconds to wait since the last occurance of a given emote 
 ellapse = 5

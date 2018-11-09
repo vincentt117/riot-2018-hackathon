@@ -1,6 +1,6 @@
 import json
 import cassiopeia as cass
-from utils import fetchCurrentMatchId, fetchMatchHistory, findLatestClip
+from utils import fetchCurrentMatchId, fetchMatchHistory, getLatestClip
 
 
 def find_match(raw_json):
@@ -23,12 +23,23 @@ def find_history(raw_json):
     return match_history
 
 def find_latest_clip():
-    array= [“https://clips.twitch.tv/LittleFuriousDragonflyArgieB8/edit“, “LUL”, 4]
+    #array= [“https://clips.twitch.tv/LittleFuriousDragonflyArgieB8/edit“, “LUL”, 4]
+    clip_array = getLatestClip()
     clip_info = {}
-    clip_info.update(
-        'match_id': '69696969',
-        'clip_url': 'https://clips.twitch.tv/kappakappakappa',
-        'clip_type': 'funny')
+    try:
+        clip_info.update({
+            'clip_url': clip_array[0],
+            'clip_type': clip_array[1],
+            'amount': clip_array[2],
+            'match_id': clip_array[3] 
+            })
+    except:
+        clip_info.update({
+            'clip_url': '',
+            'clip_type': '',
+            'amount': '',
+            'match_id': ''
+            })
     return clip_info
 
 def setup_streamer_config(raw_json):
