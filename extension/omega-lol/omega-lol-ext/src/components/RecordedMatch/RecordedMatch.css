@@ -1,0 +1,268 @@
+@font-face {
+  font-family: "Beaufort for LOL";
+  font-style: normal;
+  font-weight: 400;
+  src: url("https://lolstatic-a.akamaihd.net/awesomefonts/1.0.0/Fonts/BeaufortforLOL-Regular.eot?#iefix") format("eot"), url("https://lolstatic-a.akamaihd.net/awesomefonts/1.0.0/Fonts/BeaufortforLOL-Regular.woff") format("woff"), url("https://lolstatic-a.akamaihd.net/awesomefonts/1.0.0/Fonts/BeaufortforLOL-Regular.ttf") format("truetype"), url("https://lolstatic-a.akamaihd.net/awesomefonts/1.0.0/Fonts/BeaufortforLOL-Regular.svg#") format("svg");
+}
+@font-face {
+  font-family: "Beaufort for LOL";
+  font-style: normal;
+  font-weight: 700;
+  src: url("https://lolstatic-a.akamaihd.net/awesomefonts/1.0.0/Fonts/BeaufortforLOL-Bold.eot?#iefix") format("eot"), url("https://lolstatic-a.akamaihd.net/awesomefonts/1.0.0/Fonts/BeaufortforLOL-Bold.woff") format("woff"), url("https://lolstatic-a.akamaihd.net/awesomefonts/1.0.0/Fonts/BeaufortforLOL-Bold.ttf") format("truetype"), url("https://lolstatic-a.akamaihd.net/awesomefonts/1.0.0/Fonts/BeaufortforLOL-Bold.svg#") format("svg");
+}
+@font-face {
+  font-family: "Spiegel";
+  font-style: normal;
+  font-weight: 400;
+  src: url("https://lolstatic-a.akamaihd.net/awesomefonts/1.0.0/Fonts/Spiegel-Regular.eot?#iefix") format("eot"), url("https://lolstatic-a.akamaihd.net/awesomefonts/1.0.0/Fonts/Spiegel-Regular.woff") format("woff"), url("https://lolstatic-a.akamaihd.net/awesomefonts/1.0.0/Fonts/Spiegel-Regular.ttf") format("truetype"), url("https://lolstatic-a.akamaihd.net/awesomefonts/1.0.0/Fonts/Spiegel-Regular.svg#") format("svg");
+}
+@font-face {
+  font-family: "Spiegel";
+  font-style: normal;
+  font-weight: 700;
+  src: url("https://lolstatic-a.akamaihd.net/awesomefonts/1.0.0/Fonts/Spiegel-Bold.eot?#iefix") format("eot"), url("https://lolstatic-a.akamaihd.net/awesomefonts/1.0.0/Fonts/Spiegel-Bold.woff") format("woff"), url("https://lolstatic-a.akamaihd.net/awesomefonts/1.0.0/Fonts/Spiegel-Bold.ttf") format("truetype"), url("https://lolstatic-a.akamaihd.net/awesomefonts/1.0.0/Fonts/Spiegel-Bold.svg#") format("svg");
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #010913;
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: "Beaufort for LOL";
+  text-transform: uppercase;
+  color: #F2E9DA;
+  letter-spacing: 2px;
+}
+
+.match-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: #F2E9DA;
+}
+
+.match-list--match {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  padding: 0.5em 0.5em 0.5em 0.6em;
+  width: 100%;
+  cursor: pointer;
+  transform: translate3d(0, 0, 0);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  color: #a09b8c;
+}
+.match-list--match .match-top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+.match-list--match .match-bottom {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0;
+}
+.expanded .match-list--match {
+  opacity: 0.3;
+}
+.match-list--match.expand {
+  opacity: 1;
+  filter: brightness(1.3);
+}
+.match-list--match.expand .match-bottom {
+  max-height: 500px;
+  padding: 0.75em 0.5em 0;
+  margin-top: 0.75em;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.match-list--match:before, .match-list--match:after {
+  pointer-events: none;
+}
+.match-list--match:before {
+  content: '';
+  position: absolute;
+  left: 1px;
+  width: 1px;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, #DECDA1, #735821);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.match-list--match:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.065) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.match-list--match:hover:after, .match-list--match:hover:before, .match-list--match.expand:after, .match-list--match.expand:before {
+  opacity: 1;
+}
+.match-list--match .left {
+  display: flex;
+}
+.match-list--match .played {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 0.6em;
+}
+.match-list--match .played .position {
+  background: linear-gradient(to bottom, #DECDA1, #735821);
+  padding: 1px;
+  transform: rotate(45deg);
+  margin-right: -5px;
+}
+.match-list--match .played .position .position--inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 19px;
+  width: 19px;
+  background: #010913;
+}
+.match-list--match .played .position .position--icon {
+  transform: rotate(-45deg);
+}
+.match-list--match .played .champion {
+  height: 40px;
+  width: 40px;
+  background: linear-gradient(to bottom, #DECDA1, #735821);
+  padding: 2px;
+  border-radius: 50%;
+}
+.match-list--match .played .champion .champion--inner {
+  background-position: center;
+  background-size: 48px;
+  box-shadow: inset 0 0 0 2px #010913;
+  border-radius: 50%;
+}
+.match-list--match .played .champion img {
+  border-radius: 50%;
+  opacity: 0;
+}
+.match-list--match .info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 2em;
+}
+.match-list--match .info .result {
+  font-family: "Beaufort for LOL", sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.9em;
+  letter-spacing: 1px;
+  color: #F2E9DA;
+}
+.match-list--match .info .queueType,
+.match-list--match .info .time {
+  font-size: 0.7em;
+  line-height: 1.2;
+}
+.match-list--match .metrics {
+  display: flex;
+}
+.match-list--match .metrics .metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 0.4em;
+}
+.match-list--match .metrics .metric:last-of-type {
+  padding-right: 0;
+}
+.match-list--match .metrics .metric--major {
+  font-family: "Beaufort for LOL", sans-serif;
+  font-weight: 700;
+  font-size: 0.9em;
+  text-align: center;
+  letter-spacing: 1px;
+  color: #F2E9DA;
+}
+.match-list--match .metrics .metric--major sup {
+  font-size: 0.6em;
+  vertical-align: baseline;
+  position: relative;
+  top: -0.4em;
+  margin-left: 0.1em;
+}
+.match-list--match .metrics .metric--minor {
+  font-size: 0.65em;
+  letter-spacing: 2px;
+  text-align: center;
+}
+.match-list--match.match-victory .result {
+  color: #0acbe6;
+}
+.match-list--match.match-defeat .result {
+  color: #ff2345;
+}
+
+.match-clips {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.clip {
+  margin-bottom: 0.85em;
+}
+.clip:hover {
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.075) 0%, transparent 100%);
+  filter: brightness(1.2);
+}
+
+.clip-link {
+  display: flex;
+  text-decoration: none;
+  color: inherit;
+}
+
+.clip-emote {
+  height: 28px;
+  width: 28px;
+  margin-right: 0.5em;
+}
+.clip-emote img {
+  height: 28px;
+  width: 28px;
+}
+
+.clip-text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.clip-text .clip-time {
+  text-decoration: none;
+  font-size: 0.7em;
+  opacity: 0.8;
+}
+.clip-text .clip-url {
+  font-weight: 500;
+  color: #F2E9DA;
+  font-size: 0.8em;
+  letter-spacing: 0.2px;
+}

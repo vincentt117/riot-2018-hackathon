@@ -1,0 +1,102 @@
+@font-face {
+  font-family: "Beaufort for LOL";
+  font-style: normal;
+  font-weight: 700;
+  src: url("https://lolstatic-a.akamaihd.net/awesomefonts/1.0.0/Fonts/BeaufortforLOL-Bold.eot?#iefix") format("eot"), url("https://lolstatic-a.akamaihd.net/awesomefonts/1.0.0/Fonts/BeaufortforLOL-Bold.woff") format("woff"), url("https://lolstatic-a.akamaihd.net/awesomefonts/1.0.0/Fonts/BeaufortforLOL-Bold.ttf") format("truetype"), url("https://lolstatic-a.akamaihd.net/awesomefonts/1.0.0/Fonts/BeaufortforLOL-Bold.svg#") format("svg");
+}
+.icon {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  padding: 43px 95px 15px 10px;
+}
+
+.icon--frame {
+  position: relative;
+}
+
+.icon--notification {
+  height: 90px;
+  width: 135px;
+  background-image: url("http://oi67.tinypic.com/5m04lz.jpg");
+  background-repeat: no-repeat;
+  background-size: 130px;
+  position: absolute;
+  top: -43px;
+  right: -97px;
+  cursor: pointer;
+  z-index: 2;
+  opacity: 0;
+  transform: rotate(6deg);
+  transform-origin: 5% 100%;
+  transition: 0.3s ease-in;
+}
+.icon--notification.pog {
+  background-image: url("http://oi67.tinypic.com/2d9381u.jpg");
+}
+.icon--notification.lul {
+  background-image: url("http://oi64.tinypic.com/24echs7.jpg");
+}
+.clipped-entrance .icon--notification {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+.clipped-exit .icon--notification {
+  opacity: 0;
+  transform: rotate(6deg);
+}
+
+.icon--jinx {
+  height: 140px;
+  width: 140px;
+  position: relative;
+  z-index: 1;
+}
+.icon--jinx .jinx-face {
+  height: 140px;
+  width: 140px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 140px;
+  position: relative;
+}
+.icon--jinx .jinx-face.lul {
+  background-image: url("http://oi63.tinypic.com/20szxjq.jpg");
+}
+.icon--jinx .jinx-face.pog {
+  background-image: url("http://oi67.tinypic.com/b4fb7r.jpg");
+}
+.icon--jinx .jinx-face.zzz {
+  background-image: url("http://oi65.tinypic.com/23rmn3c.jpg");
+}
+
+.icon--record {
+  font-family: 'Beaufort for LOL';
+  font-size: 2.4em;
+  color: #F2E9DA;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+.icon--record .icon--record-wins,
+.icon--record .icon--record-losses {
+  margin: 0 0.2em;
+  text-shadow: 0 2px 3px black;
+  border-bottom: 2px solid;
+}
+.icon--record .icon--record-wins {
+  border-color: #0acbe6;
+}
+.icon--record .icon--record-losses {
+  border-color: #BD1F38;
+}
+.icon--record .icon--record-sep {
+  font-size: 0.6em;
+}
+
+.player {
+  position: absolute;
+  top: 100px;
+}
